@@ -77,24 +77,23 @@
 #
 #
 #
-
 # @lc code=start
 from typing import List
 from collections import Counter
 
-
 class Solution:
     def findJudge(self, n: int, trust: List[List[int]]) -> int:
-        inDegrees = Counter(y for _, y in trust)
-        outDegrees = Counter(x for x, _ in trust)
-        return next(
-            (
-                i
-                for i in range(1, n + 1)
-                if inDegrees[i] == n - 1 and outDegrees[i] == 0
-            ),
-            -1,
-        )
+        if len(trust) == 0:
+            return 1 if n == 1 else -1
+        l1 = list(zip(*trust))[1]
+        l0 = list(zip(*trust))[0]
+        count = Counter(l1)
+        for k, v in count.items():
+            if v != n - 1:
+                continue
+            if k not in l0:
+                return k
+        return -1
 
 
 # @lc code=end
