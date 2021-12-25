@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func twoSum(nums []int, target int) []int {
+func twoSum1(nums []int, target int) []int {
 	var maps = make(map[int]int)
 	for index, num := range nums {
 		if index2, ok := maps[target-num]; ok {
@@ -13,7 +13,7 @@ func twoSum(nums []int, target int) []int {
 	return []int{}
 }
 
-func main() {
+func main1() {
 	nums := []int{1, 3, 2, -3, -4, -5}
 	target := 5
 	fmt.Print(twoSum(nums, target))
